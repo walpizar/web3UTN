@@ -68,6 +68,7 @@ export class UsuariosController{
         usuario.role= role;
         usuario.estado= true;
 
+        // FALTA VALIDATOR 
 
         try {
 
@@ -82,8 +83,11 @@ export class UsuariosController{
         res.status(200).json("ok");
     }
 
+    //tarea
     static modificar = async(req:Request, res:Response)=>{        
 
+
+        //obtnero y una vez qe ya lo tengo , setear datos nuevos y enviar a guardar SAVE
     }
 
     static eliminar = async(req:Request, res:Response)=>{        
