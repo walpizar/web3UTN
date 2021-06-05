@@ -1,9 +1,13 @@
 import { Router } from "express";
+import usuarios from "./usuarios";
 
 
-const route= Router();
-/*
-route.use("/user",users);
+const routes= Router();
 
-route.use("/pruductos",productos);
-*/
+routes.use("/usuario",usuarios);
+
+//routes.use("/productos",productos);
+
+export default routes;
+
+
