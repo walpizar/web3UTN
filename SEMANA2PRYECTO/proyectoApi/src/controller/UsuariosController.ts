@@ -1,8 +1,7 @@
 import { validate } from "class-validator";
 import { Request, Response } from "express";
-import { appendFile } from "fs";
-import { getRepository, OffsetWithoutLimitNotSupportedError, SimpleConsoleLogger } from "typeorm";
-import { Usuarios } from "../entity/usuarios";
+import { getRepository} from "typeorm";
+import { Usuarios } from "../entity/Usuarios";
 
 export class UsuariosController{
 
@@ -218,7 +217,4 @@ export class UsuariosController{
 
         return res.status(202).json({mensaje:'ok'});
     }
-
-
-
 }
