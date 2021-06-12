@@ -1,5 +1,6 @@
-import { IsBoolean, IsEmail, IsNotEmpty, Matches, MaxLength, MinLength } from "class-validator";
+import { IsBoolean, IsEmail, IsNotEmpty,  MaxLength,  MinLength } from "class-validator";
 import { Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import * as bcrypt from 'bcryptjs';
 
 @Entity()
 @Unique(['username'])
@@ -36,6 +37,7 @@ export class Usuarios{
 
     @Column()
     @IsNotEmpty()  
+    @MinLength(6)
    // @Matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")
     password: string;
 
@@ -48,5 +50,13 @@ export class Usuarios{
     @IsBoolean()
     estado: boolean
 
+    hashPassword(): void {
+        const salt = bcrypt.genSaltSync(10);
+        this.password= bcrypt.hashSync(this.password, salt);
+    }
+
+    checkPassword(password: string): boolean{
+        return bcrypt.compareSync(password, this.password);
+    }
     
 }
